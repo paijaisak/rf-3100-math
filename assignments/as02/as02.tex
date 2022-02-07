@@ -34,19 +34,54 @@ Normalvektoren til planet er $\left[2,\;5,\;-1\right]$.\\\\
 			\end{gather}
 			\begin{equation}
 				\tag{Implisitt formel}
-					2x+5y-z\;=\;\frac{3}{2}\\
+					2x+5y-z\;=\;-1.5\\
 			\end{equation}
 	(b)\quad Hva er avstanden mellom planet og origo?
 			\begin{equation}
 				\tag*{}
+					\frac{d}{\sqrt{a^2+b^2+c^2}}\;=\;
+					-\frac{1.5}{\sqrt{2^2+5^2+(-1)^2}}\;=\;
+					-\frac{1.5}{\sqrt{30}}\;\approx\;0.274					
 			\end{equation}
 	(c)\quad Gjør om normalvektoren til en enhetsvektor
 	med samme retning, og ta indreproduktet med $\vec{A}$.
 	Hva observerer du?
+			\begin{gather}
+				\tag*{}
+					\hat{n}\;=\;\left[
+						\frac{2}{\left|n\right|},\;
+						\frac{5}{\left|n\right|},\;
+						\frac{-1}{\left|n\right|}
+					\right]\\
+				\tag*{}
+						\left|n\right|\;=\;\sqrt{2^2+5^2+(-1)^2}
+						\;=\;\sqrt{30}\\
+				\tag*{}
+					\hat{n}\;=\;\left[
+						\frac{2}{\sqrt{30}},\;
+						\frac{5}{\sqrt{30}},\;
+						\frac{-1}{\sqrt{30}}
+					\right]
+				\end{gather}
 			\begin{equation}
 				\tag*{}
+					\hat{n}\cdot\vec{a}\;=\;
+					\left[
+						\frac{2}{\sqrt{30}},\;
+						\frac{5}{\sqrt{30}},\;
+						\frac{-1}{\sqrt{30}}
+					\right]\cdot
+					\left[
+						-3,\;1,\;\frac{1}{2}
+					\right]\;=\;
+					\left[
+						\frac{-6}{\sqrt{30}}+
+						\frac{5}{\sqrt{30}}+
+						\frac{-0.5}{\sqrt{30}}
+					\right]\;=\;-\frac{1.5}{\sqrt{30}}
 			\end{equation}
 			
+\newpage\quad			
 \subsection*{Exercise 03}
 Gitt et plan beskrevet med:
 	\begin{equation}
@@ -64,7 +99,6 @@ Gitt et punkt $A=(3,\;3,\;-1)$ som ligger utenfor planet.\\\\
 				\tag*{}			
 			\end{equation}
 			
-\newpage\quad
 \subsection*{Exercise 04}
 Gitt fem punkter i rommet:
 	\begin{gather}
