@@ -44,8 +44,8 @@ Normalvektoren til planet er $\left[2,\;5,\;-1\right]$.\\\\
 					-\frac{1.5}{\sqrt{30}}\;\approx\;0.274					
 			\end{equation}
 	(c)\quad Gjør om normalvektoren til en enhetsvektor
-	med samme retning, og ta indreproduktet med $\vec{A}$.
-	Hva observerer du?
+	med samme retning, og ta indreproduktet med
+	$\vec{A}$. Hva observerer du?
 			\begin{gather}
 				\tag*{}
 					\hat{n}\;=\;\left[
@@ -125,15 +125,17 @@ Gitt et punkt $A=(3,\;3,\;-1)$ som ligger utenfor planet.\\\\
 						\frac{19}{7},\;
 						\frac{22}{7},\;
 						-\frac{10}{7}
-					\right|\\
-				\tag*{}
-					P\;=\;\left(
-						\frac{19}{7},\;
-						\frac{22}{7},\;
-						-\frac{10}{7}
-					\right)
+					\right|
 			\end{gather}
-			
+			\begin{equation}
+					\tag*{}
+						P\;=\;\left(
+							\frac{19}{7},\;
+							\frac{22}{7},\;
+							-\frac{10}{7}
+						\right)
+			\end{equation}
+\newpage\quad		
 \subsection*{Exercise 04}
 Gitt fem punkter i rommet:
 	\begin{gather}
@@ -151,27 +153,137 @@ Gitt fem punkter i rommet:
 	(a)\quad Bruk formlene fra s. 315 i læreboka (eller
 	algoritmen fra s. 315-316) til å finne normalvektoren til
 	planet som passer best til disse punktene.
+			\begin{gather}
+				\tag*{}
+					n_x\;=\;(z_1+z_2)(y_1-y_2)\;+\;
+						(z_2+z_3)(y_2-y_3)\;+\;
+						(z_3+z_4)(y_3-y_4)\;+\;
+						(z_4+z_5)(y_4-y_5)\\
+				\tag*{}
+					n_y\;=\;(x_1+x_2)(z_1-z_2)\;+\;
+						(x_2+x_3)(z_2-z_3)\;+\;
+						(x_3+x_4)(z_3-z_4)\;+\;
+						(x_4+x_5)(z_4-z_5)\\
+				\tag*{}
+					n_z\;=\;(y_1+y_2)(x_1-x_2)\;+\;
+						(y_2+y_3)(x_2-x_3)\;+\;
+						(y_3+y_4)(x_3-x_4)\;+\;
+						(y_4+y_5)(x_4-x_5)
+			\end{gather}
+			\begin{gather}
+				\tag*{}
+					n_x\;=\;
+						(0+2)\left(2-\left(-\frac{1}{3}
+							\right)\right)\;+\;
+						(2+3)\left(-\frac{1}{3}-2\right)\;+\;
+						(3+0)\left(2-\frac{1}{2}\right)\;+\;
+						(0+2)\left(\frac{1}{2}-1\right)\\
+				\tag*{}
+					n_y\;=\;
+						(1+(-2))(0-2)\;+\;
+						(-2+0)(2-3)\;+\;
+						(0+3)(3-0)\;+\;
+						(3+1)(0-2)\\
+				\tag*{}
+					n_z\;=\;
+						\left(2+\left(-\frac{1}{3}\right)\right)
+							(1-(-2))\;+\;
+						\left(-\frac{1}{3}+2\right)(-2-0)\;+\;
+						\left(2+\frac{1}{2}\right)(0-3)\;+\;
+						\left(\frac{1}{2}+1\right)(3-1)
+			\end{gather}
+			\begin{gather}
+				\tag*{}
+					n_x\;=\;2\left(\frac{6}{3}+\frac{1}{3}
+					\right)+5\left(-\frac{1}{3}-\frac{6}{3}
+					\right)+3\left(\frac{4}{2}-\frac{1}{2}
+					\right)+2\left(\frac{1}{2}-\frac{2}{2}
+					\right)\\
+				\tag*{}
+					n_x\;=\;2\left(\frac{7}{3}\right)+
+					5\left(-\frac{7}{3}\right)+
+					3\left(\frac{3}{2}\right)+
+					2\left(-\frac{1}{2}\right)
+					\;=\;\frac{14}{3}-\frac{35}{3}+
+					\frac{9}{2}-1\\
+				\tag*{}
+					\;=\;-7+\frac{9}{2}-1
+					\;=\;-\frac{-14+9-2}{2}\;=\;-\frac{7}{2}
+					\;=\;3.5
+			\end{gather}
 			\begin{equation}
 				\tag*{}
+					n_y\;=\;-1(-2)-2(-1)+3(3)+4(-2)\;=\;
+					2+2+9-8\;=\;5
 			\end{equation}
+			\begin{gather}
+				\tag*{}
+					n_z\;=\;\frac{5}{3}(3)+\frac{5}{3}(-2)
+					+\frac{5}{2}(-3)+\frac{3}{2}(2)\\
+				\tag*{}
+					\;=\;\frac{15}{3}-\frac{10}{3}
+					-\frac{15}{2}+\frac{6}{2}\;=\;
+					\frac{5}{3}-\frac{9}{2}\;=\;
+					\frac{10-27}{6}\;=\;-\frac{17}{6}
+			\end{gather}
+			\begin{gather}
+				\tag*{}
+					\hat{n}\;=\;\left[
+						\frac{3.5}{|n|},\;
+						\frac{5}{|n|},\;
+						\frac{\left(-\frac{17}{6}\right)}{|n|}
+					\right]\\
+				\tag*{}
+					|n|\;=\;\sqrt{
+						3.5^2+5^2+\left(-\frac{17}{6}\right)^2
+					}\;=\;\sqrt{12.25+25+\frac{289}{36}}
+					\;=\;\frac{\sqrt{1630}}{6}
+					\;\approx\;6.728\\
+				\tag*{}
+					\hat{n}\;=\;\left[
+							\frac{3.5}{6.728},\;
+							\frac{5}{6.728},\;
+							\frac{\left(-\frac{17}{6}\right)}
+							{6.728}					
+					\right]\;=\;\left[
+						0.52,\;0.74,\;-0.42
+					\right]
+			\end{gather}
+\newpage
+	\begin{equation}
+		\tag*{}
+	\end{equation}
 	(b)\quad Bruk formelene fra s. 316 til å finne $d$.
-			\begin{equation}
+			\begin{gather}
 				\tag*{}
-			\end{equation}
-	
+					d\;=\;\frac{1}{n}\sum_{i=1}^{n}\left(
+						p_i \cdot n
+					\right)\;=\;\frac{1}{n}\left(
+						\sum_{i=1}^{n}p_i
+					\right)\cdot n\\
+				\tag*{}
+					\cdots
+			\end{gather}
 \subsection*{Exercise 05}
-Gitt en trekant i 3D-rommet med hjørnene $A$, $B$ og $C$.
-Vi får vite at $A$ og $B$ er henholdsvis $(2, 0, 1)$ og
-$(3, 3, 4)$. Vi får også vite at vinkelen ved hjørnet $C$ er $50^\circ$. Til slutt får vi vite at lengden fra $B$ til $C$ er 
+Gitt en trekant i 3D-rommet med hjørnene
+$A$, $B$ og $C$. Vi får vite at $A$ og $B$ er henholdsvis $(2, 0, 1)$ og $(3, 3, 4)$. Vi får også
+vite at vinkelen ved hjørnet $C$ er $50^\circ$. Til slutt får vi vite at lengden fra $B$ til $C$ er 
 $4,5$\\\\
 	(a)\quad Regn ut lengden $AB$.
-			\begin{equation}
+			\begin{gather}
 				\tag*{}
-			\end{equation}
+					\vec{AB}\;=\;[
+						3-2,\;3-0,\;4-1
+					]\;=\;[1,\;3,\;3]\\
+				\tag*{}
+					\left|\vec{AB}\right|\;=\;
+					\sqrt{1^2+3^2+3^2}\;=\;\sqrt{19}
+			\end{gather}
 	(b)\quad Bruk sinussetningen for å beregne vinkelen
 	ved hjørnet $A$.
 			\begin{equation}
 				\tag*{}
+					\angle A\;=\;
 			\end{equation}
 	(d)\quad Bruk cosinussetningen for å beregne lengden $AC$.
 			\begin{equation}
