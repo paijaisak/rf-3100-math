@@ -2,7 +2,7 @@
 
 namespace as03;
 
-class Program
+static class Program
 {
     static void Main()
     {
