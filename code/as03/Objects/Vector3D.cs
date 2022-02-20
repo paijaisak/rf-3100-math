@@ -21,4 +21,16 @@ public class Vector3D
 
         return new Vector3D(x_comp, y_comp, z_comp);
     }
+
+    public override string ToString()
+    {
+        return "[" + x + ", " + y + ", " + z + "]";
+    }
+
+    public void Normalize()
+    {
+        this.x /= this.Length;
+        this.y /= this.Length;
+        this.z /= this.Length;
+    }
 }

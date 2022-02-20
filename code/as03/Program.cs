@@ -1,12 +1,14 @@
-﻿using as03.Tests;
+﻿using as03.Objects;
+using as03.Tests;
 
 namespace as03;
 
-static class Program
+class Program
 {
     static void Main()
     {
-        Console.WriteLine("hi");
-        Point3DTests.RunTests();
+        //Console.WriteLine("Hello World!");
+        //Point3DTests.RunTests();
+        PlaneTests.RunTests();
     }
 }
