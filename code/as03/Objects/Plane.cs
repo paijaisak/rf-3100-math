@@ -2,8 +2,21 @@
 
 public class Plane
 {
-    public double D { get; }
     public Point3D[]? Points { get; }
+
+    private double _d;
+    public double D
+    {
+        get
+        {
+            if (Points == null) return 0;
+            if (_d != 0) return _d;
+                
+            return Normal.x * Points[0].x + Normal.y * Points[0].y + Normal.z * Points[0].z;
+        }
+
+        set => _d = value;
+    }
 
     private Vector3D? _normal;
     public Vector3D Normal
@@ -60,7 +73,10 @@ public class Plane
     {
         if (Points == null) return "Plane with normal: " + Normal;
 
-        return "Plane with points: " + Points[0] + ", " +
-               Points[1] + ", " + Points[2];
+        //return "Plane with points: " + Points[0] + ", " +
+        //       Points[1] + ", " + Points[2];
+
+        return "Plane with definition: " + Normal.x + "x + " +
+               Normal.y + "y + " + Normal.z + "z = " + D;
     }
 }

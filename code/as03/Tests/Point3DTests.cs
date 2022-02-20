@@ -27,8 +27,8 @@ public class Point3DTests
         {
             Console.WriteLine(
                 "Distance between points " + points[i] + " and " +
-                points[i + 1] + " is: " + 
-                Math.Round(Point3D.Distance(points[i], points[i + 1]), 2) + "\n"
+                              points[i + 1] + " is: " + 
+                              Math.Round(Point3D.Distance(points[i], points[i + 1]), 2) + "\n"
                 );
             i += 2;
         }
@@ -36,7 +36,6 @@ public class Point3DTests
 
     public static void RunTests()
     {
-        Console.WriteLine();
         InitializePoints();
         DistanceBetweenPoints();
     }

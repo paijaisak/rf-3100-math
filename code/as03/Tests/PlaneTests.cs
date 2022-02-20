@@ -51,7 +51,7 @@ public class PlaneTests
        foreach (var plane in planes)
        {
            Console.WriteLine(plane);
-           Console.WriteLine("With normal: " + plane.Normal);
+           Console.WriteLine("With normal: " + plane.Normal + "\n");
        }
     }
 
