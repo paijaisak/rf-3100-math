@@ -6,11 +6,11 @@ public class PlaneTests
 {
     private static readonly Plane[] planes = new Plane[3];
 
-    private static readonly Vector3D[] allPoints = new Vector3D[9];
+    private static readonly Point3D[] allPoints = new Point3D[9];
 
-    private static readonly Vector3D[] pointsA = new Vector3D[3];
-    private static readonly Vector3D[] pointsB = new Vector3D[3];
-    private static readonly Vector3D[] pointsC = new Vector3D[3];
+    private static readonly Point3D[] pointsA = new Point3D[3];
+    private static readonly Point3D[] pointsB = new Point3D[3];
+    private static readonly Point3D[] pointsC = new Point3D[3];
 
     private static readonly Random random = new();
 
@@ -22,7 +22,7 @@ public class PlaneTests
             var y = (double) random.Next(0, 10);
             var z = (double) random.Next(0, 10);
 
-            allPoints[i] = new Vector3D(x, y, z);
+            allPoints[i] = new Point3D(x, y, z);
 
             if (i < 3)
             {

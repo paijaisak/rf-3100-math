@@ -2,51 +2,33 @@
 
 public class Plane
 {
-    //private Vector3D? normal;
     public double D { get; }
-    public Vector3D[]? Points { get; }
+    public Point3D[]? Points { get; }
 
     private Vector3D? _normal;
-    public Vector3D? Normal
+    public Vector3D Normal
     {
         get
         {
             if (_normal != null) return _normal;
             if (Points == null) return new Vector3D(0, 0, 0);
 
-            var n = Points.Length;
+            var q = (Vector3D) Points[0];
+            var r = (Vector3D) Points[1];
+            var s = (Vector3D) Points[2];
 
-            double x = 0;
-            double y = 0;
-            double z = 0;
+            var qr = r - q;
+            var qs = s - q;
 
-            for (var i = 0; i < n - 1; i++)
-            {
-                var p = Points[i];
-                var pNext = Points[i + 1];
+            var normal = Vector3D.Cross(qr, qs);
 
-                x += (p.z + pNext.z) * (p.y - pNext.y);
-                y += (p.x + pNext.x) * (p.z - pNext.z);
-                z += (p.y + pNext.y) * (p.x - pNext.x);
-            }
-
-            // When the loop wraps to the start
-            x += (Points[n - 1].z + Points[0].z) * (Points[n - 1].y - Points[0].y);
-            y += (Points[n - 1].x + Points[0].x) * (Points[n - 1].z - Points[0].z);
-            z += (Points[n - 1].y + Points[0].y) * (Points[n - 1].x - Points[0].x);
-
-            x /= 2;
-            y /= 2;
-            z /= 2;
-
-            var res = new Vector3D(x, y, z);
-
-            return res;
+            return normal;
         }
+        
         set => _normal = value;
     }
 
-    public Plane(Vector3D[] points)
+    public Plane(Point3D[] points)
     {
         Points = points;
     }
@@ -56,7 +38,7 @@ public class Plane
         D = d;
     }
 
-    public Plane(Vector3D[] points, Vector3D normal)
+    public Plane(Point3D[] points, Vector3D normal)
     {
         Points = points;
         Normal = normal;

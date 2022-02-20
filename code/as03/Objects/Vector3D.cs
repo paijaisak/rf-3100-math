@@ -13,6 +13,12 @@ public class Vector3D
         this.z = z;
     }
 
+    // CASTING OPERATOR
+    public static explicit operator Point3D(Vector3D v)
+    {
+        return new Point3D(v.x, v.y, v.z);
+    }
+
     public static Vector3D operator -(Vector3D u, Vector3D v)
     {
         return new Vector3D(u.x - v.x, u.y - v.y, u.z - v.z);
