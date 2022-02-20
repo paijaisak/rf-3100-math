@@ -19,6 +19,18 @@ public class Vector3D
         return new Point3D(v.x, v.y, v.z);
     }
 
+    // MULTIPLICATION OPERATOR
+    public static Vector3D operator *(Vector3D u, double n)
+    {
+        return new Vector3D(u.x * n, u.y * n, u.z * n);
+    }
+
+    // DIVISION OPERATOR
+    public static Vector3D operator /(Vector3D u, double n)
+    {
+        return new Vector3D(u.x / n, u.y / n, u.z / n);
+    }
+
     public static Vector3D operator -(Vector3D u, Vector3D v)
     {
         return new Vector3D(u.x - v.x, u.y - v.y, u.z - v.z);
