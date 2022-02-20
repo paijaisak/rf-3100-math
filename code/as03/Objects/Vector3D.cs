@@ -33,4 +33,13 @@ public class Vector3D
         this.y /= this.Length;
         this.z /= this.Length;
     }
+
+    public static Vector3D Cross(Vector3D left, Vector3D right)
+    { 
+        var x = left.y * right.z - left.z * right.y;
+        var y = left.z * right.x - left.x * right.z;
+        var z = left.x * right.y - left.y * right.x;
+
+        return new Vector3D(x, y, z);
+    }
 }
