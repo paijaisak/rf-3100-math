@@ -19,9 +19,22 @@ public class Point3D
 
     public static double Distance(Point3D a, Point3D b)
     {
-        var v = (Vector3D) a - (Vector3D) b;
+        var d = (Vector3D) a - (Vector3D) b;
+        return d.Length;
+    }
 
-        return v.Length;
+    public double Distance(Plane plane)
+    {
+        var n = plane.Normal;
+
+        var a = (n * (Vector3D) this + plane.D) / plane.Normal.Length;
+
+        if (a < 0)
+        {
+            a *= -1;
+        }
+
+        return a;
     }
 
     public override string ToString()

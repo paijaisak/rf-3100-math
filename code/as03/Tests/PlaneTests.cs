@@ -43,22 +43,32 @@ public class PlaneTests
         pointsC[2] = allPoints[8];
     }
 
-    public static void RunTests()
-    {
-       InitializePoints();
-       InitializePlanes();
-
-       foreach (var plane in planes)
-       {
-           Console.WriteLine(plane);
-           Console.WriteLine("With normal: " + plane.Normal + "\n");
-       }
-    }
-
     private static void InitializePlanes()
     {
         planes[0] = new Plane(pointsA);
         planes[1] = new Plane(pointsB);
         planes[2] = new Plane(pointsC);
+    }
+
+    public static void RunTests()
+    {
+       InitializePoints();
+       InitializePlanes();
+
+        foreach (var p in planes)
+        {
+            Console.WriteLine(p + "\n");
+        }
+
+        Console.WriteLine("-------------------------------------------\n");
+        
+        var point = pointsA[0]; 
+        var plane = planes[0]; 
+        var distance = Math.Round(point.Distance(plane), 2);
+        
+        Console.WriteLine(
+            "Distance between point " + point + " and " +
+                          plane + " is: " + distance + "\n"
+           );
     }
 }

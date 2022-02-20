@@ -57,6 +57,7 @@ public class Plane
     {
         Points = points;
     }
+
     public Plane(Vector3D normal, double d)
     {
         Normal = normal;
@@ -72,9 +73,6 @@ public class Plane
     public override string ToString()
     {
         if (Points == null) return "Plane with normal: " + Normal;
-
-        //return "Plane with points: " + Points[0] + ", " +
-        //       Points[1] + ", " + Points[2];
 
         return "Plane with definition: " + Normal.x + "x + " +
                Normal.y + "y + " + Normal.z + "z = " + D;

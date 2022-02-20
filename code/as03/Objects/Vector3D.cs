@@ -19,7 +19,7 @@ public class Vector3D
         return new Point3D(v.x, v.y, v.z);
     }
 
-    // MULTIPLICATION OPERATOR
+    // MULTIPLICATION WITH SCALAR
     public static Vector3D operator *(Vector3D u, double n)
     {
         return new Vector3D(u.x * n, u.y * n, u.z * n);
@@ -31,9 +31,16 @@ public class Vector3D
         return new Vector3D(u.x / n, u.y / n, u.z / n);
     }
 
+    // SUBTRACTION OPERATOR
     public static Vector3D operator -(Vector3D u, Vector3D v)
     {
         return new Vector3D(u.x - v.x, u.y - v.y, u.z - v.z);
+    }
+
+    // DOT PRODUCT WITH * OPERATOR
+    public static double operator *(Vector3D u, Vector3D v)
+    {
+        return (u.x * v.x) + (u.y * v.y) + (u.z * v.z);
     }
 
     public override string ToString()
@@ -43,9 +50,9 @@ public class Vector3D
 
     public void Normalize()
     {
-        this.x /= this.Length;
-        this.y /= this.Length;
-        this.z /= this.Length;
+        x /= this.Length;
+        y /= this.Length;
+        z /= this.Length;
     }
 
     public static Vector3D Cross(Vector3D left, Vector3D right)

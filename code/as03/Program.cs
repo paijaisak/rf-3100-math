@@ -9,6 +9,7 @@ internal class Program
     {
         //Console.WriteLine("Hello World!");
         Point3DTests.RunTests();
+        Console.WriteLine("-------------------------------------------\n");
         PlaneTests.RunTests();
     }
 }

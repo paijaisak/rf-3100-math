@@ -30,6 +30,7 @@ public class Point3DTests
                               points[i + 1] + " is: " + 
                               Math.Round(Point3D.Distance(points[i], points[i + 1]), 2) + "\n"
                 );
+
             i += 2;
         }
     }
