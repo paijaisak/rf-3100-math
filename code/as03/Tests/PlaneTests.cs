@@ -18,9 +18,9 @@ public class PlaneTests
     {
         for (var i = 0; i < 9; i++)
         {
-            var x = (double) random.Next(0, 10);
-            var y = (double) random.Next(0, 10);
-            var z = (double) random.Next(0, 10);
+            var x = (double) random.Next(0, 20);
+            var y = (double) random.Next(0, 20);
+            var z = (double) random.Next(0, 20);
 
             allPoints[i] = new Point3D(x, y, z);
 
@@ -62,7 +62,7 @@ public class PlaneTests
 
         Console.WriteLine("-------------------------------------------\n");
         
-        var point = pointsA[0]; 
+        var point = allPoints[0]; 
         var plane = planes[0]; 
         var distance = Math.Round(point.Distance(plane), 2);
         
