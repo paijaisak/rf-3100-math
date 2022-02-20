@@ -22,6 +22,18 @@ public class Plane
 
             var normal = Vector3D.Cross(qr, qs);
 
+            {
+                while (normal.x % 2 == 0 && normal.y % 2 == 0 && normal.z % 2 == 0)
+                {
+                    normal /= 2;
+                }
+
+                while (normal.x % 3 == 0 && normal.y % 3 == 0 && normal.z % 3 == 0)
+                {
+                    normal /= 3;
+                }
+            }
+
             return normal;
         }
         
