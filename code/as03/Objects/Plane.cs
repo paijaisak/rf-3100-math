@@ -9,8 +9,8 @@ public class Plane
     {
         get
         {
-            if (Points == null) return 0;
             if (_d != 0) return _d;
+            if (Points == null) return 0;
                 
             return Normal.x * Points[0].x + Normal.y * Points[0].y + Normal.z * Points[0].z;
         }

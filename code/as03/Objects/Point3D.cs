@@ -37,6 +37,13 @@ public class Point3D
         return a;
     }
 
+    public bool IsOnPlane(Plane plane)
+    {
+        var res = (plane.Normal.x * x) + (plane.Normal.y * y) + (plane.Normal.z * z) - plane.D;
+
+        return res == 0;
+    }
+
     public override string ToString()
     {
         return "(" + x + ", " + y + ", " + z + ")";
