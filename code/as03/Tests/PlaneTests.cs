@@ -16,7 +16,7 @@ public class PlaneTests
 
     private static void InitializePoints()
     {
-        for (int i = 0; i < 9; i++)
+        for (var i = 0; i < 9; i++)
         {
             var x = (double) random.Next(0, 10);
             var y = (double) random.Next(0, 10);

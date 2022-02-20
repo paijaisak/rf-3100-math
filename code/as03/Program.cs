@@ -3,12 +3,12 @@ using as03.Tests;
 
 namespace as03;
 
-class Program
+internal class Program
 {
-    static void Main()
+    private static void Main()
     {
         //Console.WriteLine("Hello World!");
-        //Point3DTests.RunTests();
+        Point3DTests.RunTests();
         PlaneTests.RunTests();
     }
 }

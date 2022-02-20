@@ -66,7 +66,7 @@ public class Plane
     {
         if (Points == null) return "Plane with normal: " + Normal;
 
-        return "Plane with _points: " + Points[0] + ", " +
+        return "Plane with points: " + Points[0] + ", " +
                Points[1] + ", " + Points[2];
     }
 }

@@ -13,13 +13,9 @@ public class Vector3D
         this.z = z;
     }
 
-    public static Vector3D VectorBetweenPoints(Point3D a, Point3D b)
+    public static Vector3D operator -(Vector3D u, Vector3D v)
     {
-        var x_comp = a.x - b.x;
-        var y_comp = a.y - b.y;
-        var z_comp = a.z - b.z;
-
-        return new Vector3D(x_comp, y_comp, z_comp);
+        return new Vector3D(u.x - v.x, u.y - v.y, u.z - v.z);
     }
 
     public override string ToString()

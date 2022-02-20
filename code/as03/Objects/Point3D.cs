@@ -11,9 +11,15 @@ public class Point3D
         this.z = z;
     }
 
+    // CASTING OPERATOR
+    public static explicit operator Vector3D(Point3D p)
+    {
+        return new Vector3D(p.x, p.y, p.z);
+    }
+
     public static double Distance(Point3D a, Point3D b)
     {
-        var v = Vector3D.VectorBetweenPoints(a, b);
+        var v = (Vector3D) a - (Vector3D) b;
 
         return v.Length;
     }
