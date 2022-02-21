@@ -23,7 +23,7 @@ public class Plane
     {
         get
         {
-            if (_normal != null) return _normal;
+            if (_normal! != null!) return _normal;
             if (Points == null) return new Vector3D(0, 0, 0);
 
             var q = (Vector3D) Points[0];

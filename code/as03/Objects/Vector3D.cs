@@ -2,7 +2,9 @@
 
 public class Vector3D
 {
-    public double x, y, z;
+    public double x;
+    public double y;
+    public double z;
 
     public double Length => Math.Sqrt(x*x + y*y + z*z);
 
@@ -11,6 +13,31 @@ public class Vector3D
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    // ASSERT EQUALS OPERATOR
+    public static bool operator ==(Vector3D u, Vector3D v)
+    {
+        return Math.Abs(u.x - v.x) < 0.0001 &&
+               Math.Abs(u.y - v.y) < 0.0001 &&
+               Math.Abs(u.z - v.z) < 0.0001;
+    }
+
+    protected bool Equals(Vector3D other)
+    {
+        return this == other;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        return obj.GetType() == this.GetType() && Equals((Vector3D) obj);
+    }
+
+    public static bool operator !=(Vector3D u, Vector3D v)
+    {
+        return !(u == v);
     }
 
     // CASTING OPERATOR
@@ -25,6 +52,11 @@ public class Vector3D
         return new Vector3D(u.x * n, u.y * n, u.z * n);
     }
 
+    public static Vector3D operator *(double n, Vector3D u)
+    {
+        return u * n;
+    }
+
     // DIVISION OPERATOR
     public static Vector3D operator /(Vector3D u, double n)
     {
@@ -35,6 +67,12 @@ public class Vector3D
     public static Vector3D operator -(Vector3D u, Vector3D v)
     {
         return new Vector3D(u.x - v.x, u.y - v.y, u.z - v.z);
+    }
+    
+    // ADDITION OPERATOR
+    public static Vector3D operator +(Vector3D u, Vector3D v)
+    {
+        return new Vector3D(u.x + v.x, u.y + v.y, u.z + v.z);
     }
 
     // DOT PRODUCT WITH * OPERATOR
@@ -62,5 +100,19 @@ public class Vector3D
         var z = left.x * right.y - left.y * right.x;
 
         return new Vector3D(x, y, z);
+    }
+    
+    public Vector3D Cross(Vector3D right)
+    {
+        var _x = y * right.z - z * right.y;
+        var _y = z * right.x - x * right.z;
+        var _z = x * right.y - y * right.x;
+
+        return new Vector3D(_x, _y, _z);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(x, y, z);
     }
 }
