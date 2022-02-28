@@ -16,23 +16,27 @@ public class LineTests
         var g = new Line3D(new Vector3D(2, 6, 10), new Vector3D(-1, -4, -7));
 
         var h = new Line3D(new Vector3D(-1, -3, -6),  new Vector3D(7, 5, 6));
-        
-        var res = f.Intersects(g, out var point);
+
+        // If one point, intersection. If two, calculate closest distance 
+
+        var res = f.Intersects(g, out var points);
 
         if (res)
         {
-            Console.WriteLine("Lines intersect at: " + point);
+            Console.WriteLine("Lines:\n     " + f + ",\nand:\n      " +
+                              g + "\nintersect at: " + points![0] + "\n");
         }
 
         Assert.IsTrue(res);
 
-        res = f.Intersects(h, out point);
+        res = f.Intersects(h, out points);
 
         Assert.False(res);
 
-        if (res)
+        if (!res)
         {
-            Console.WriteLine("Lines intersect at: " + point);
+            Console.WriteLine("Distance between lines:\n        " + f + ",\nand:\n      " + h + "\nis: " +
+                              Math.Round(Point3D.Distance(points![0], points[1]), 2) + "\n");
         }
     }
 

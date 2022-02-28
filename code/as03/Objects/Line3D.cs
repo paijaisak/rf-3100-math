@@ -18,7 +18,9 @@ public class Line3D
         V = direction;
     }
 
-    public bool Intersects(Line3D line, out Point3D? point)
+    // Returns one point if there is an intersection
+    // Returns two (closest) points if lines don't intersect and are not parallel
+    public bool Intersects(Line3D line, out Point3D[]? points)
     {
         // Points
         var r1 = P;
@@ -34,7 +36,7 @@ public class Line3D
         // If lines are parallel in both positive and negative directions
         if (Math.Abs(u - 1) < 0.000001 || Math.Abs(u - (-1)) < 0.000001)
         {
-            point = null;
+            points = null;
             return false;
         }
 
@@ -50,50 +52,21 @@ public class Line3D
         var p1 = r1 + (d1 * v1);
         var p2 = r2 + (d2 * v2);
 
-        if (p1 != p2)
-        {
-            point = null;
-            return false;
-        }
+        // Out -> points
+        points = new Point3D[2];
+        points[0] = (Point3D) p1;
+        points[1] = (Point3D) p2;
 
-        point = (Point3D) p1;
-
-        return true;
-
-        //    var t = ( ((p2 - p1).Cross(v2)) * (v1.Cross(v2)) ) 
-        //        / ( ((v1.Cross(v2)).Length) * ((v1.Cross(v2)).Length) );
-
-        //    var s = ( ((p1 - p2).Cross(v1)) * (v2.Cross(v1)) ) 
-        //            / ( ((v2.Cross(v1)).Length) * ((v2.Cross(v1)).Length) );
-
-        //    var res = Math.Abs(t - s) < 0.000001 &&
-        //              !AreParallel(this, line);
-        //    if (res)
-        //    {
-        //        point = (Point3D) (p1 + (t * v1));
-        //    }
-
-        //    else if (double.IsNaN(t) || double.IsNaN(s))
-        //    {
-        //        point = (Point3D) (p1 + (t * v1));
-        //    }
-
-        //    else
-        //    {
-        //        if (AreParallel(this, line))
-        //        {
-        //            Debug.WriteLine("\nLines are parallel\n");
-        //        }
-
-        //        point = null;
-        //    }
-
-        //    return res;
-        //}
+        return p1 == p2;
     }
 
     public static bool AreParallel(Line3D l, Line3D m)
     {
         return l.V.Cross(m.V) == new Vector3D(0, 0, 0);
+    }
+
+    public override string ToString()
+    {
+        return "Line defined by point: " + P + " and direction: " + V;
     }
 }
