@@ -18,43 +18,78 @@ public class Line3D
         V = direction;
     }
 
-    public bool Intersects(Line3D line, out Point3D? p)
+    public bool Intersects(Line3D line, out Point3D? point)
     {
-        var p1 = P;
-        var p2 = line.P;
+        // Points
+        var r1 = P;
+        var r2 = line.P;
 
-        var v1 = V;
-        var v2 = line.V;
+        // Direction vectors
+        var v1 = Vector3D.Normalize(V);
+        var v2 = Vector3D.Normalize(line.V);
 
-        var t = ( ((p2 - p1).Cross(v2)) * (v1.Cross(v2)) ) 
-            / ( ((v1.Cross(v2)).Length) * ((v1.Cross(v2)).Length) );
+        // Direction projection
+        var u = v1 * v2;
 
-        var s = ( ((p1 - p2).Cross(v1)) * (v2.Cross(v1)) ) 
-                / ( ((v2.Cross(v1)).Length) * ((v2.Cross(v1)).Length) );
-
-        var res = Math.Abs(t - s) < 0.000001 &&
-                  !AreParallel(this, line);
-        if (res)
+        // If lines are parallel in both positive and negative directions
+        if (Math.Abs(u - 1) < 0.000001 || Math.Abs(u - (-1)) < 0.000001)
         {
-            p = (Point3D) (p1 + (t * v1));
+            point = null;
+            return false;
         }
 
-        else if (double.IsNaN(t) || double.IsNaN(s))
+        // Separation projections
+        var t1 = (r2 - r1) * v1;
+        var t2 = (r2 - r1) * v2;
+
+        // Distances along lines
+        var d1 = (t1 - (u * t2)) / (1 - (u * u));
+        var d2 = (t2 - (u * t1)) / ((u * u) - 1);
+
+        // Find the points of intersection
+        var p1 = r1 + (d1 * v1);
+        var p2 = r2 + (d2 * v2);
+
+        if (p1 != p2)
         {
-            p = (Point3D) (p1 + (t * v1));
+            point = null;
+            return false;
         }
 
-        else
-        {
-            if (AreParallel(this, line))
-            {
-                Debug.WriteLine("\nLines are parallel\n");
-            }
+        point = (Point3D) p1;
 
-            p = null;
-        }
+        return true;
 
-        return res;
+        //    var t = ( ((p2 - p1).Cross(v2)) * (v1.Cross(v2)) ) 
+        //        / ( ((v1.Cross(v2)).Length) * ((v1.Cross(v2)).Length) );
+
+        //    var s = ( ((p1 - p2).Cross(v1)) * (v2.Cross(v1)) ) 
+        //            / ( ((v2.Cross(v1)).Length) * ((v2.Cross(v1)).Length) );
+
+        //    var res = Math.Abs(t - s) < 0.000001 &&
+        //              !AreParallel(this, line);
+        //    if (res)
+        //    {
+        //        point = (Point3D) (p1 + (t * v1));
+        //    }
+
+        //    else if (double.IsNaN(t) || double.IsNaN(s))
+        //    {
+        //        point = (Point3D) (p1 + (t * v1));
+        //    }
+
+        //    else
+        //    {
+        //        if (AreParallel(this, line))
+        //        {
+        //            Debug.WriteLine("\nLines are parallel\n");
+        //        }
+
+        //        point = null;
+        //    }
+
+        //    return res;
+        //}
     }
 
     public static bool AreParallel(Line3D l, Line3D m)

@@ -16,8 +16,11 @@ public class Vector3D
     }
 
     // ASSERT EQUALS OPERATOR
-    public static bool operator ==(Vector3D u, Vector3D v)
+    public static bool operator ==(Vector3D? u, Vector3D? v)
     {
+        if (u is null) return false;
+        if (v is null) return false;
+
         return Math.Abs(u.x - v.x) < 0.0001 &&
                Math.Abs(u.y - v.y) < 0.0001 &&
                Math.Abs(u.z - v.z) < 0.0001;
@@ -35,7 +38,7 @@ public class Vector3D
         return obj.GetType() == this.GetType() && Equals((Vector3D) obj);
     }
 
-    public static bool operator !=(Vector3D u, Vector3D v)
+    public static bool operator !=(Vector3D? u, Vector3D? v)
     {
         return !(u == v);
     }
@@ -88,9 +91,18 @@ public class Vector3D
 
     public void Normalize()
     {
-        x /= this.Length;
-        y /= this.Length;
-        z /= this.Length;
+        x /= Length;
+        y /= Length;
+        z /= Length;
+    }
+    
+    public static Vector3D Normalize(Vector3D v)
+    {
+        Vector3D n = new((v.x / v.Length), (v.y / v.Length), (v.z / v.Length));
+
+        var l = n.Length;
+
+        return n;
     }
 
     public static Vector3D Cross(Vector3D left, Vector3D right)

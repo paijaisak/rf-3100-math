@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using as03.Objects;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 
 namespace math_tests;
 
@@ -11,24 +11,24 @@ public class LineTests
     [Test]
     public void TestIntersections()
     {
-        // FIRST TWO SHOULD NOT INTERSECT, THEY ARE PARALLEL
+        // F and g intersects, h does not intersect with either
         var f = new Line3D(new Vector3D(0, 0, 0), new Vector3D(2, 4, 6));
-        var g = new Line3D(new Vector3D(2, 6, 10), new Vector3D(1, 2, 3));
+        var g = new Line3D(new Vector3D(2, 6, 10), new Vector3D(-1, -4, -7));
 
-        var h = new Line3D(new Vector3D(-1, -2, -3),  new Vector3D(6, 2, 4));
-
+        var h = new Line3D(new Vector3D(-1, -3, -6),  new Vector3D(7, 5, 6));
+        
         var res = f.Intersects(g, out var point);
 
-        if (!res)
+        if (res)
         {
-            Console.WriteLine(point);
+            Console.WriteLine("Lines intersect at: " + point);
         }
 
-        Assert.IsFalse(res);
+        Assert.IsTrue(res);
 
         res = f.Intersects(h, out point);
 
-        Assert.IsTrue(res);
+        Assert.False(res);
 
         if (res)
         {
