@@ -1,0 +1,4 @@
+A = Skjæring(f, g)
+B = Skjæring(f, h)
+
+a = Avstand(f, h)
