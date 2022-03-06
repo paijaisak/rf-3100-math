@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using as03.Objects;
+using NUnit.Framework;
 
 namespace math_tests
 {

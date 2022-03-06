@@ -22,16 +22,16 @@ public class Plane
         set => _normal = value;
     }
 
-    private static double CalculateD(Vector3D normal, IReadOnlyList<Point3D> points)
+    private static double CalculateD( Vector3D normal, IReadOnlyList<Point3D> points )
     {
         return normal.x * points[0].x + normal.y * points[0].y + normal.z * points[0].z;
     }
 
-    private static Vector3D CalculateNormal(IReadOnlyList<Point3D> points)
+    private static Vector3D CalculateNormal( IReadOnlyList<Point3D> points )
     {
-        var q = (Vector3D) points[0];
-        var r = (Vector3D) points[1];
-        var s = (Vector3D) points[2];
+        var q = (Vector3D)points[0];
+        var r = (Vector3D)points[1];
+        var s = (Vector3D)points[2];
 
         var qr = r - q;
         var qs = s - q;
@@ -53,14 +53,14 @@ public class Plane
         return normal;
     }
 
-    public Plane(Point3D[] points)
+    public Plane( Point3D[] points )
     {
         Points = points;
         Normal = CalculateNormal(points);
         D = CalculateD(Normal, Points);
     }
 
-    public Plane(Vector3D normal, double d)
+    public Plane( Vector3D normal, double d )
     {
         Normal = normal;
         D = d;
@@ -72,7 +72,7 @@ public class Plane
         Points[2] = GeneratePoint(3);
     }
 
-    private Point3D GeneratePoint(double x)
+    private Point3D GeneratePoint( double x )
     {
         var z = (-Normal.x * x - (Normal.y * x * 2) + D) / Normal.z;
 

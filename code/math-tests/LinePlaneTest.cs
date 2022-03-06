@@ -1,6 +1,6 @@
-﻿using System;
-using as03.Objects;
+﻿using as03.Objects;
 using NUnit.Framework;
+using System;
 
 namespace math_tests;
 
@@ -58,7 +58,7 @@ public class LinePlaneTest
             Console.WriteLine(l + "\n    and:\n" + p + "\n   intersect in the point: " + point);
         }
     }
-    
+
     [Test]
     public void TestParallel()
     {

@@ -1,6 +1,6 @@
-﻿using System;
-using as03.Objects;
+﻿using as03.Objects;
 using NUnit.Framework;
+using System;
 
 namespace math_tests;
 
@@ -14,7 +14,7 @@ public class LineTests
         var f = new Line3D(new Vector3D(0, 0, 0), new Vector3D(2, 4, 6));
         var g = new Line3D(new Vector3D(2, 6, 10), new Vector3D(-1, -4, -7));
 
-        var h = new Line3D(new Vector3D(-1, -3, -6),  new Vector3D(7, 5, 6));
+        var h = new Line3D(new Vector3D(-1, -3, -6), new Vector3D(7, 5, 6));
 
         // If one point, intersection. If two, calculate closest distance 
 
@@ -45,7 +45,7 @@ public class LineTests
         var r = new Line3D(new Vector3D(0, 0, 0), new Vector3D(2, 4, 6));
         var s = new Line3D(new Vector3D(2, 6, 10), new Vector3D(1, 2, 3));
 
-        var q = new Line3D(new Vector3D(6, 12, 1),  new Vector3D(6, 2, 4));
+        var q = new Line3D(new Vector3D(6, 12, 1), new Vector3D(6, 2, 4));
 
         Assert.IsTrue(Line3D.AreParallel(r, s));
         Assert.IsFalse(Line3D.AreParallel(r, q));

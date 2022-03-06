@@ -12,9 +12,9 @@ public class Point3DTests
     {
         for (var i = 0; i < 8; i++)
         {
-            var x = (double) random.Next(0, 20);
-            var y = (double) random.Next(0, 20);
-            var z = (double) random.Next(0, 20);
+            var x = (double)random.Next(0, 20);
+            var y = (double)random.Next(0, 20);
+            var z = (double)random.Next(0, 20);
 
             points[i] = new Point3D(x, y, z);
         }
@@ -27,7 +27,7 @@ public class Point3DTests
         {
             Console.WriteLine(
                 "Distance between points " + points[i] + " and " +
-                              points[i + 1] + " is: " + 
+                              points[i + 1] + " is: " +
                               Math.Round(Point3D.Distance(points[i], points[i + 1]), 2) + "\n"
                 );
 

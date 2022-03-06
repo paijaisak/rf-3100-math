@@ -8,7 +8,7 @@ public class Line3D
     // Direction vector
     public Vector3D V { get; }
 
-    public Line3D(Vector3D point, Vector3D direction)
+    public Line3D( Vector3D point, Vector3D direction )
     {
         P = point;
         V = direction;
@@ -16,7 +16,7 @@ public class Line3D
 
     // Out => one point if there is an intersection
     // Out => two (closest) points if lines don't intersect and are not parallel
-    public bool Intersects(Line3D line, out Point3D[]? points)
+    public bool Intersects( Line3D line, out Point3D[]? points )
     {
         // Points
         var r1 = P;
@@ -50,13 +50,13 @@ public class Line3D
 
         // Out -> points
         points = new Point3D[2];
-        points[0] = (Point3D) p1;
-        points[1] = (Point3D) p2;
+        points[0] = (Point3D)p1;
+        points[1] = (Point3D)p2;
 
         return p1 == p2;
     }
 
-    public bool Intersects(Plane plane, out Point3D? point, out double distance)
+    public bool Intersects( Plane plane, out Point3D? point, out double distance )
     {
         var normal = plane.Normal;
 
@@ -89,7 +89,7 @@ public class Line3D
         return true;
     }
 
-    public double Distance(Plane plane)
+    public double Distance( Plane plane )
     {
         var normal = plane.Normal;
 
@@ -100,7 +100,7 @@ public class Line3D
         return u / normal.Length;
     }
 
-    public static bool AreParallel(Line3D l, Line3D m)
+    public static bool AreParallel( Line3D l, Line3D m )
     {
         return l.V.Cross(m.V) == new Vector3D(0, 0, 0);
     }
