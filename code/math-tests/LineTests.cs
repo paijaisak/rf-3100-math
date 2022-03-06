@@ -1,7 +1,6 @@
 ﻿using System;
 using as03.Objects;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace math_tests;
 

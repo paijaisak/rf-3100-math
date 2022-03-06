@@ -89,19 +89,9 @@ public class Vector3D
         return "[" + x + ", " + y + ", " + z + "]";
     }
 
-    public void Normalize()
-    {
-        x /= Length;
-        y /= Length;
-        z /= Length;
-    }
-    
     public static Vector3D Normalize(Vector3D v)
     {
-        Vector3D n = new((v.x / v.Length), (v.y / v.Length), (v.z / v.Length));
-
-        var l = n.Length;
-
+        Vector3D n = new(v.x / v.Length, v.y / v.Length, v.z / v.Length);
         return n;
     }
 

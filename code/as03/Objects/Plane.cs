@@ -2,13 +2,12 @@
 
 public class Plane
 {
-    public Point3D[]? Points { get; }
+    public Point3D[] Points { get; }
 
     private double _d;
     public double D
     {
         get => _d != 0 ? _d :
-            Points == null ? 0 :
             CalculateD(Normal, Points);
 
         set => _d = value;
@@ -18,7 +17,6 @@ public class Plane
     public Vector3D Normal
     {
         get => _normal != null! ? _normal :
-            Points == null ? new Vector3D(0, 0, 0) :
             CalculateNormal(Points);
 
         set => _normal = value;
@@ -66,12 +64,23 @@ public class Plane
     {
         Normal = normal;
         D = d;
+
+        Points = new Point3D[3];
+
+        Points[0] = GeneratePoint(1);
+        Points[1] = GeneratePoint(2);
+        Points[2] = GeneratePoint(3);
+    }
+
+    private Point3D GeneratePoint(double x)
+    {
+        var z = (-Normal.x * x - (Normal.y * x * 2) + D) / Normal.z;
+
+        return new Point3D(x, 2 * x, z);
     }
 
     public override string ToString()
     {
-        if (Points == null) return "Plane with normal: " + Normal;
-
         return "Plane with definition: " + Normal.x + "x + " +
                Normal.y + "y + " + Normal.z + "z = " + D;
     }
