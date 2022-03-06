@@ -25,9 +25,7 @@ public class Point3D
 
     public double Distance(Plane plane)
     {
-        var n = plane.Normal;
-
-        var a = (n * (Vector3D) this + plane.D) / plane.Normal.Length;
+        var a = (plane.Normal * (Vector3D) this + plane.D) / plane.Normal.Length;
 
         if (a < 0)
         {
@@ -41,7 +39,7 @@ public class Point3D
     {
         var res = (plane.Normal.x * x) + (plane.Normal.y * y) + (plane.Normal.z * z) - plane.D;
 
-        return res == 0;
+        return Math.Abs(res) < 0.001 && Math.Abs(res) >= 0;
     }
 
     public override string ToString()

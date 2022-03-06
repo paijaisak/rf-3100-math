@@ -7,13 +7,9 @@ public class Plane
     private double _d;
     public double D
     {
-        get
-        {
-            if (_d != 0) return _d;
-            if (Points == null) return 0;
-                
-            return Normal.x * Points[0].x + Normal.y * Points[0].y + Normal.z * Points[0].z;
-        }
+        get => _d != 0 ? _d :
+            Points == null ? 0 :
+            CalculateD(Normal, Points);
 
         set => _d = value;
     }
@@ -21,53 +17,55 @@ public class Plane
     private Vector3D? _normal;
     public Vector3D Normal
     {
-        get
+        get => _normal != null! ? _normal :
+            Points == null ? new Vector3D(0, 0, 0) :
+            CalculateNormal(Points);
+
+        set => _normal = value;
+    }
+
+    private static double CalculateD(Vector3D normal, IReadOnlyList<Point3D> points)
+    {
+        return normal.x * points[0].x + normal.y * points[0].y + normal.z * points[0].z;
+    }
+
+    private static Vector3D CalculateNormal(IReadOnlyList<Point3D> points)
+    {
+        var q = (Vector3D) points[0];
+        var r = (Vector3D) points[1];
+        var s = (Vector3D) points[2];
+
+        var qr = r - q;
+        var qs = s - q;
+
+        var normal = Vector3D.Cross(qr, qs);
+
         {
-            if (_normal! != null!) return _normal;
-            if (Points == null) return new Vector3D(0, 0, 0);
-
-            var q = (Vector3D) Points[0];
-            var r = (Vector3D) Points[1];
-            var s = (Vector3D) Points[2];
-
-            var qr = r - q;
-            var qs = s - q;
-
-            var normal = Vector3D.Cross(qr, qs);
-
+            while (normal.x % 2 == 0 && normal.y % 2 == 0 && normal.z % 2 == 0)
             {
-                while (normal.x % 2 == 0 && normal.y % 2 == 0 && normal.z % 2 == 0)
-                {
-                    normal /= 2;
-                }
-
-                while (normal.x % 3 == 0 && normal.y % 3 == 0 && normal.z % 3 == 0)
-                {
-                    normal /= 3;
-                }
+                normal /= 2;
             }
 
-            return normal;
+            while (normal.x % 3 == 0 && normal.y % 3 == 0 && normal.z % 3 == 0)
+            {
+                normal /= 3;
+            }
         }
-        
-        set => _normal = value;
+
+        return normal;
     }
 
     public Plane(Point3D[] points)
     {
         Points = points;
+        Normal = CalculateNormal(points);
+        D = CalculateD(Normal, Points);
     }
 
     public Plane(Vector3D normal, double d)
     {
         Normal = normal;
         D = d;
-    }
-
-    public Plane(Point3D[] points, Vector3D normal)
-    {
-        Points = points;
-        Normal = normal;
     }
 
     public override string ToString()
